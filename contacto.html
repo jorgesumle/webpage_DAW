@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta name="autor" content="Jorge Maldonado Ventura"/>
+		<meta name="editor usado" content="Sublime Text 2"/>
+		<meta name="fecha de creación" content="29 de noviembre del 2015"/>
+		<meta name="contenido" content="Página de contacto"/>
+		<meta name="objetivos de la web" content="Permitir que nuestros lectores y seguidores contacten con nosotros"/>
+		<meta name="palabras clave" content="arcade machines, máqinas recreativas, MAME"/>
+		<title>Freak Spot</title>
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+		<link rel="icon" type="images/ico" href="favicon.ico" />
+	</head>
+	<body>
+		<div class="menuBackground">
+			<a href="index.html"><img id="icono" alt="Logotipo del sitio web" src="images/icono.png" /></a>
+			<ul class="menu">
+				<li><a href="art&iacute;culos/videojuegos/El_&uacute;ltimo_nivel_de_Pac-Man_y_los_videojuegos_indies.htm">Videojuegos</a></li>
+				<li><a href="art&iacute;culos/programaci&oacute;n/programaci&oacute;n.html">Programaci&oacute;n</a></li>
+				<li><a href="https://www.youtube.com/channel/UC9hFpnRQd3gJmCAOHpmFsKQ">Mi canal de Youtube</a></li>
+			</ul>
+			<ul class="menu2">
+				<li><a href="galer&iacute;a_fotogr&aacute;fica.htm">Im&aacute;genes</a></li>
+				<li><a href="sobre_el_sitio_web.htm">Sobre el sitio web</a></li>
+				<li><a class="there" href="contacto.html">Contacto</a></li>
+			</ul>
+		</div>
+		&nbsp;
+		<div class="form">
+		<h1>Contacta conmigo</h1>
+		<p>Si quieres contactar conmigo por cualquier raz&oacute;n, por favor rellena el siguiente formulario. Intentar&eacute; responder lo antes posible. Tambi&eacute;n puedes ponerte en contacto conmigo a trav&eacute;s de <a href="https://www.youtube.com/channel/UC9hFpnRQd3gJmCAOHpmFsKQ/discussion">YouTube</a>. Puedes dejar los campos que quieras en blanco, pero te recomiendo rellenar el correo electr&oacute;nico si quieres recibir una respuesta.</p>
+		<form action="mailto:jorgesumle@gmail.com" method="post" enctype="multipart/form-data" accept="png, jpg, gif">
+			<div>
+				<div>
+					<label><strong>Nombre o apodo</strong></label>
+					<input name="name" size="20" type="text"/>
+				</div>
+				<div>
+					<label><strong>Correo electr&oacute;nico</strong></label>
+					<input maxlength="320" name="email" size="50" type="text"/>
+				</div>
+				<div>
+					<label for="sexo"><strong>Sexo</strong></label>
+					<select name="sexo">
+						<option	value="unselected">--Selecciona tu sexo--</option>
+						<option	value="male">Hombre</option>
+						<option	value="female">Mujer</option>
+						<option	value="transgender_(male)">Hombre transexual</option>
+						<option	value="transgender_(female)">Mujer transexual</option>
+						<option	value="Genderqueer">Big&eacute;nero</option>
+						<option	value="Other">Hombre, pero con curiosidad por saber qu&eacute; se siente al ser mujer</option>
+						<option	value="Other">Mujer, pero con curiosidad por saber qu&eacute; se siente al ser hombre</option>
+						<option	value="Hermaphroditus_(male)">Hermafrodita con inclinaciones masculinas</option>
+						<option	value="Hermaphroditus_(female)">Hermafrodita con inclinaciones femeninas</option>
+						<option	value="Other">Nacido/a sin genitales e identificado/a como hombre</option>
+						<option	value="Other">Nacido/a sin genitales e identificado/a como mujer</option>
+						<option	value="Other">Asexual</option>
+						<option	value="Other">Ninguno de los anteriores</option>
+						<option	value="Other">Que se me identifique como neutro</option>
+						<option	value="Other">No quiero decirlo</option>
+					</select>
+				</div>
+				<div>
+					<label><strong>Asunto</strong></label>
+
+					<!--Pongo un espacio en blanco para que se respete el espacio de los label y para que los 'checkboxs' estén como los campos.-->
+					<input name="do_not_read" type="checkbox"/>Me aburro y solo quiero hacerte perder el tiempo.<br/>
+					<label>&nbsp;</label>
+					<input checked="checked" name="read" type="checkbox"/>Paso de especificar el asunto.<br/>
+					<label>&nbsp;</label>
+					<input name="check_carefully" type="checkbox"/>He encontrado un error, falta de ortograf&iacute;a, etc.<br/>
+					<label>&nbsp;</label>
+					<input name="reply" type="checkbox"/>Hay una cosa que has publicado que no entiendo o que me resulta confusa.<br/>
+					<label>&nbsp;</label>
+					<input name="do_not_read" type="checkbox"/>Te odio y quiero que dejes de publicar contenido. Inserta abajo, en el cuadro de texto, tus cr&iacute;ticas e insultos.<br/>
+					<label>&nbsp;</label>
+					<input name="do_not_read" type="checkbox"/>Quiero colaborar con el sitio web.<br/>
+					<label>&nbsp;</label>
+					<input name="otro" type="checkbox"/>Tengo otro motivo diferente<br/>
+				</div>
+				<div>
+					<label><strong>Escribe aqu&iacute; tu mensaje</strong></label>
+					<textarea name="description" cols="75" maxlength="1000000" rows="10"></textarea>
+				</div>
+				<div>
+					<label><strong>Fichero adjunto</strong></label>
+					<input name="adjunto" type="file"/>
+				</div>
+				<div id="right">
+					<input type="submit" name="boton_envio" value="Enviar" />
+	            	<input type="reset" name="boton_reset" value="Borrar los datos introducidos" />
+            	</div>
+			</div>
+		</form>
+		</div>
+	</body>
+</html>

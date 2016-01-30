@@ -1,0 +1,54 @@
+a:visited {
+    color: red;
+}
+a:hover{
+	color: green;
+}
+
+div.img{
+	background-color: #FFF9F8;
+	border: 1px solid black;
+	height: 24em;
+	width: 40em;	
+	margin: 0 auto;
+	margin-top: 1em;
+	padding: 0.5em;
+	text-align: center;
+}
+div.img a{
+	color: #00000E;
+	text-decoration: none;
+}
+div.img a:active img{
+	color: blue;
+}
+div.img a:hover img{
+	outline: 2px solid #4DFFA4;
+}
+div.img a:visited img{
+	outline: 2px solid #FFF444;
+}
+div.linker{
+	margin: 0 auto;
+	margin-top: 1ex;
+	background-color: #E5E4E1;
+	border: 2px solid #CCCBCB;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 1.4em;
+	padding: 0.42em;
+	width: 30em;
+}
+h1{
+	visibility: hidden;
+}
+img.img{
+	text-align: center;
+	max-width: 39em;
+	max-height: 23em;
+}
+span#derecha{
+	float:right;
+}
+p{
+	text-align: center;
+}
