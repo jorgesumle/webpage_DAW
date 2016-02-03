@@ -12,6 +12,44 @@
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 		<link rel="stylesheet" type="text/css" href="css/galery.css" />
 		<link rel="icon" type="images/ico" href="favicon.ico" />
+		<script type="text/javascript">
+			var images = new Array('bienvenida.png', 'icono.png', 'python-logo-master-v3-TM.png', 'lastLevelPac-Man.jpg', 'PDFIcon.png');
+			
+			var description = new Array(
+				'Bienvenido a la galer&iacute;a fotogr&aacute;fica de la web. Son todas las im&aacute;genes que aparecen en la web. Clica en las im&aacute;genes para verlas en su tama&ntilde;o original.',
+				'Este es el icono de la web.',
+				'<a href="https://www.python.org/">Python</a> es un lenguaje de programaci&oacute;n de muy alto nivel.',
+				'El &uacute;ltimo nivel de <cite>Pac-Man</cite>. La variable tipo <em>byte</em>, que solo puede almacenar 2<sup>8</sup> (256) números se desborda, y hace este &uacute;ltimo nivel pr&aacute;cticamente injugable.',
+				'Imagen que se utiliza para indicar que se puede descargar un archivo PDF.'
+			);
+			var imgAlt = new Array(
+				'Cutre imagen de bienvenida',
+				'El icono de la web',
+				'El logotipo de Python',
+				'El &uacute;ltimo nivel de Pac-Man',
+				'Icono de descarga de documentos PDF'
+			);
+
+			var pos = 0;
+
+			function changeImg(direction){
+				var image = document.getElementById("galeryImage");
+				var text = document.getElementById("imgDescription");
+				const lastImage = images.length - 1;
+				var aux = pos + direction;
+				if(aux < 0){
+					aux = lastImage;
+				}
+				if(aux > lastImage){
+					aux = 0;
+				}
+				pos = aux;
+
+				image.src = 'images/' + images[pos];
+				image.alt = imgAlt[pos];
+				text.innerHTML = description[pos];
+			}
+		</script>
 	</head>
 	<body>
 		<div class="menuBackground">
@@ -30,13 +68,13 @@
 		&nbsp;
 		<div class="img">
 			<a href="images/bienvenida.png">
-				<img alt="cutre imagen de bienvenida" src="images/bienvenida.png">
+				<img alt="Cutre imagen de bienvenida" id="galeryImage" src="images/bienvenida.png">
 			</a>
-			<p>Bienvenido a la galer&iacute;a fotogr&aacute;fica de la web. Son todas las im&aacute;genes que aparecen en la web. Clica en las im&aacute;genes para verlas en su tama&ntilde;o original.</p>
+			<p id="imgDescription">Bienvenido a la galer&iacute;a fotogr&aacute;fica de la web. Son todas las im&aacute;genes que aparecen en la web. Clica en las im&aacute;genes para verlas en su tama&ntilde;o original.</p>
 		</div>
 				
 		<div class="linker">
-			<a href="images/el_&uacute;ltimo_nivel_de_Pac-Man.htm">&laquo; Anterior &nbsp;</a><span id="derecha"><a href="images/icono.htm">Siguiente &raquo;</a></span> <!--span-->
+			<a onclick="changeImg(-1)">&laquo; Anterior &nbsp;</a><span id="derecha"><a onclick="changeImg(-1)">Siguiente &raquo;</a></span>
 		</div>
 	</body>
 </html>

@@ -46,6 +46,10 @@ img.img{
 	max-width: 39em;
 	max-height: 23em;
 }
+img#galeryImage{
+	max-width: 80%;
+	max-height: 80%;
+}
 span#derecha{
 	float:right;
 }
