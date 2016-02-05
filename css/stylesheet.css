@@ -78,7 +78,7 @@ div.index{
 	max-height: 6.4em;
 }
 div.menuBackground{
-	height: 2.2em;
+	height: 35.2px;
 	float: left;
 	background: rgba(76,76,76,1);
 	background: -moz-linear-gradient(left, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 4%, rgba(83,83,83,1) 5%, rgba(17,17,17,1) 16%, rgba(3,23,0,1) 32%, rgba(71,71,71,1) 40%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 66%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
@@ -88,7 +88,7 @@ div.menuBackground{
 	background: -ms-linear-gradient(left, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 4%, rgba(83,83,83,1) 5%, rgba(17,17,17,1) 16%, rgba(3,23,0,1) 32%, rgba(71,71,71,1) 40%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 66%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
 	background: linear-gradient(to right, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 4%, rgba(83,83,83,1) 5%, rgba(17,17,17,1) 16%, rgba(3,23,0,1) 32%, rgba(71,71,71,1) 40%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 66%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=1 );
-	outline: 4px dotted #333;
+	outline: 2px dotted #333;
 	clear: both;
 	width: 100%;
 }
@@ -189,14 +189,12 @@ textarea:focus{
 }
 
 ul.menu{
-	border-left: 1px solid #7C7C7C;
+	height: 35.2px;
 	display: inline;
 	float: left;
 	width: 45%;
 	list-style: none;
-	padding: 2px;
 	margin: 0em 5%;
-	padding: 2px;
 }
 ul.menu2{
 	display: inline;
@@ -206,13 +204,12 @@ ul.menu2{
 	padding: 1px;
 }
 ul.menu2 li{
-	padding: 3px;
-	outline: 1px groove #7C7C7C;
+	padding: 2px;
 	float: left;
 }
 ul.menu li{
 	float: left;
-	outline: 3px groove #7C7C7C;
+	outline: 1px groove #7C7C7C;
 }
 ul.menu a:hover, ul.menu2 a:hover{
 	background-color: black;
@@ -254,10 +251,9 @@ a#pressed{
 	min-width: 900px;
 }
 #icono{
+	max-height: 35.2px;
 	float: left;
-	width: 100px;
 	display: inline;
-	margin-top: -0.3em;
 }
 #right{
 	float: right;
