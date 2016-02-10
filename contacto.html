@@ -11,8 +11,83 @@
 		<title>Freak Spot</title>
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 		<link rel="icon" type="images/ico" href="favicon.ico" />
+		<script type="text/javascript">
+			function foc(id){
+				document.getElementById(id).focus();
+			}
+			function checkForm(){
+				var isValid = true;
+				if(!checkName()){
+					isValid = false;
+				}
+				if(!checkEmail()){
+					alert("El email introducido no es válido.");
+					isValid = false;
+				}
+				if(!checkDNI()){
+					alert("El DNI introducido no es válido.");
+					isValid = false;
+				}
+				if(!checkPhone()){
+					isValid = false;
+				}
+				
+				
+				return isValid;
+			}
+			function checkEmail(){
+				var email = document.getElementById("email");
+				return ( /^\w+@\w+\.es$/.test(email) || /^\w+@\w+\.com$/.test(email) || /^\w+@\w+\.net$/.test(email));
+			}
+			function checkDNI(){
+				var isValid = false;
+				var DNI = document.getElementById("ejercicio2").value;
+				var DNINumber = DNI.substring(0, 8);
+				alert(DNINumber);
+				var DNILetter = DNI.charAt(8);
+				alert(DNILetter);
+				if(!(isNaN(DNINumber) || DNINumber < 0 || DNINumber > 99999999) && (DNILetter == 'T' || DNILetter == 'R' || DNILetter == 'W' || DNILetter == 'A' || DNILetter == 'W'
+					|| DNILetter == 'A' || DNILetter == 'G' || DNILetter == 'M' || DNILetter == 'Y' || DNILetter == 'F' || DNILetter == 'P' || DNILetter == 'D' || DNILetter == 'X' || DNILetter == 'B' || DNILetter == 'N' || DNILetter == 'J' || DNILetter == 'Z' || DNILetter == 'S' || DNILetter == 'Q' || DNILetter == 'V' || DNILetter == 'H' || DNILetter == 'L' || DNILetter == 'C' || DNILetter == 'K' || DNILetter == 'E' || DNILetter == 'T')){
+					isValid = true;
+				}
+				return isValid;
+			}
+			function checkPhone(){
+				var phone = document.getElementById("phone").value;
+				var isValid;
+				if(phone == "" || phone == null){
+					isValid = false;
+					alert("Debes rellenar el campo teléfono.")
+				} else{
+					isValid = true;
+				}
+				return isValid;
+			}
+			function checkName(){
+				var name = document.getElementById("nam").value;
+				var isValid;
+				if(name == "" || name == null){
+					isValid = false;
+					alert("Debes rellenar el campo nombre");
+				}
+				else{
+					isValid = true;
+				}
+				return isValid;
+			}
+			/*
+			function checkGender(){
+				var select = document.getElementsByTagName("select");
+				var option = select.options[0];
+				for(i in gender){
+					if(gender != true)
+				}
+				var isValid;			
+			}
+			*/
+		</script>
 	</head>
-	<body>
+	<body onload="foc('nam')">
 		<div class="menuBackground">
 			<a href="index.html"><img id="icono" alt="Logotipo del sitio web" src="images/icono.png" /></a>
 			<ul class="menu">
@@ -29,20 +104,28 @@
 		&nbsp;
 		<div class="form">
 		<h1>Contacta conmigo</h1>
-		<p>Si quieres contactar conmigo por cualquier raz&oacute;n, por favor rellena el siguiente formulario. Intentar&eacute; responder lo antes posible. Tambi&eacute;n puedes ponerte en contacto conmigo a trav&eacute;s de <a href="https://www.youtube.com/channel/UC9hFpnRQd3gJmCAOHpmFsKQ/discussion">YouTube</a>. Puedes dejar los campos que quieras en blanco, pero te recomiendo rellenar el correo electr&oacute;nico si quieres recibir una respuesta.</p>
+		<p>Si quieres contactar conmigo por cualquier raz&oacute;n, por favor rellena el siguiente formulario. Intentar&eacute; responder lo antes posible. Tambi&eacute;n puedes ponerte en contacto conmigo a trav&eacute;s de <a href="https://www.youtube.com/channel/UC9hFpnRQd3gJmCAOHpmFsKQ/discussion" name="toMyYouTubeChannel">YouTube</a> o <a name="toMyTwitter" href="https://twitter.com/primerodaw">Twitter</a>. Debes llenar todos los campos.</p>
 		<form action="mailto:jorgesumle@gmail.com" method="post" enctype="multipart/form-data" accept="png, jpg, gif">
 			<div>
 				<div>
 					<label><strong>Nombre o apodo</strong></label>
-					<input name="name" size="20" type="text"/>
+					<input id="nam" name="name" size="20" type="text"/>
 				</div>
 				<div>
 					<label><strong>Correo electr&oacute;nico</strong></label>
-					<input maxlength="320" name="email" size="50" type="text"/>
+					<input id="email" maxlength="320" name="email" size="50" type="text"/>
+				</div>
+				<div>
+					<label><strong>DNI</strong></label>
+					<input id="DNI" maxlength="9" name="DNI" size="20" type="text"/>
+				</div>
+				<div>
+					<label><strong>Tel&eacute;fono</strong></label>
+					<input id="phone" maxlength="25" name="phone" size="25" type="text"/>
 				</div>
 				<div>
 					<label for="sexo"><strong>Sexo</strong></label>
-					<select name="sexo">
+					<select id="gender" name="sexo">
 						<option	value="unselected">--Selecciona tu sexo--</option>
 						<option	value="male">Hombre</option>
 						<option	value="female">Mujer</option>
@@ -88,7 +171,16 @@
 					<input name="adjunto" type="file"/>
 				</div>
 				<div id="right">
-					<input type="submit" name="boton_envio" value="Enviar" />
+					<input type="submit" name="boton_envio" onclick="
+							var validData = checkForm();
+								if (validData){
+									this.disabled=true; 
+									this.value='Enviando...'; 
+									this.form.submit();
+								} else{
+									alert('te faltan datos');
+								}"
+						value="Enviar" />
 	            	<input type="reset" name="boton_reset" value="Borrar los datos introducidos" />
             	</div>
 			</div>
