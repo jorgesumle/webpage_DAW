@@ -204,14 +204,17 @@ ul.menu2{
 	padding: 1px;
 }
 ul.menu2 li{
-	padding: 2px;
+	margin-top: 0.3%;
+	outline: 1px solid green;
 	float: left;
 }
 ul.menu li{
+	margin-top: 0.4%;
 	float: left;
 	outline: 1px groove #7C7C7C;
 }
 ul.menu a:hover, ul.menu2 a:hover{
+	margin-top: 0.4%;
 	background-color: black;
 	color: green;
 }

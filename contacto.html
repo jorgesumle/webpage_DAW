@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+<!DOCTYPE html>
+<html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta charset="UTF-8"/>
 		<meta name="autor" content="Jorge Maldonado Ventura"/>
 		<meta name="editor usado" content="Sublime Text 2"/>
 		<meta name="fecha de creación" content="29 de noviembre del 2015"/>
@@ -11,80 +11,49 @@
 		<title>Freak Spot</title>
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 		<link rel="icon" type="images/ico" href="favicon.ico" />
-		<script type="text/javascript">
+		<script charset="utf-8" type="text/javascript">
 			function foc(id){
 				document.getElementById(id).focus();
 			}
 			function checkForm(){
-				var isValid = true;
-				if(!checkName()){
-					isValid = false;
-				}
-				if(!checkEmail()){
+				/*if(!checkEmail()){
 					alert("El email introducido no es válido.");
 					isValid = false;
-				}
+				}*/
+                var isValid = true;
 				if(!checkDNI()){
 					alert("El DNI introducido no es válido.");
 					isValid = false;
 				}
-				if(!checkPhone()){
-					isValid = false;
-				}
-				
-				
-				return isValid;
+                if(!checkGender()){
+                    isValid = false;
+                    alert("Selecciona una opción de la lista desplegable (\"Sexo\").");
+                }
+                return isValid;
 			}
-			function checkEmail(){
+			/*function checkEmail(){
 				var email = document.getElementById("email");
 				return ( /^\w+@\w+\.es$/.test(email) || /^\w+@\w+\.com$/.test(email) || /^\w+@\w+\.net$/.test(email));
-			}
+			}*/
 			function checkDNI(){
 				var isValid = false;
-				var DNI = document.getElementById("ejercicio2").value;
+				var DNI = document.getElementById("DNI").value;
 				var DNINumber = DNI.substring(0, 8);
-				alert(DNINumber);
 				var DNILetter = DNI.charAt(8);
-				alert(DNILetter);
 				if(!(isNaN(DNINumber) || DNINumber < 0 || DNINumber > 99999999) && (DNILetter == 'T' || DNILetter == 'R' || DNILetter == 'W' || DNILetter == 'A' || DNILetter == 'W'
 					|| DNILetter == 'A' || DNILetter == 'G' || DNILetter == 'M' || DNILetter == 'Y' || DNILetter == 'F' || DNILetter == 'P' || DNILetter == 'D' || DNILetter == 'X' || DNILetter == 'B' || DNILetter == 'N' || DNILetter == 'J' || DNILetter == 'Z' || DNILetter == 'S' || DNILetter == 'Q' || DNILetter == 'V' || DNILetter == 'H' || DNILetter == 'L' || DNILetter == 'C' || DNILetter == 'K' || DNILetter == 'E' || DNILetter == 'T')){
 					isValid = true;
 				}
 				return isValid;
 			}
-			function checkPhone(){
-				var phone = document.getElementById("phone").value;
-				var isValid;
-				if(phone == "" || phone == null){
-					isValid = false;
-					alert("Debes rellenar el campo teléfono.")
-				} else{
-					isValid = true;
-				}
-				return isValid;
-			}
-			function checkName(){
-				var name = document.getElementById("nam").value;
-				var isValid;
-				if(name == "" || name == null){
-					isValid = false;
-					alert("Debes rellenar el campo nombre");
-				}
-				else{
-					isValid = true;
-				}
-				return isValid;
-			}
-			/*
 			function checkGender(){
-				var select = document.getElementsByTagName("select");
-				var option = select.options[0];
-				for(i in gender){
-					if(gender != true)
-				}
-				var isValid;			
-			}
-			*/
+                if(document.getElementById("defaultOption").selected){
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
 		</script>
 	</head>
 	<body onload="foc('nam')">
@@ -109,24 +78,24 @@
 			<div>
 				<div>
 					<label><strong>Nombre o apodo</strong></label>
-					<input id="nam" name="name" size="20" type="text"/>
+					<input id="nam" name="name" size="20" type="text" required/>
 				</div>
 				<div>
 					<label><strong>Correo electr&oacute;nico</strong></label>
-					<input id="email" maxlength="320" name="email" size="50" type="text"/>
+					<input id="email" maxlength="320" name="email" size="50" type="email" required/>
 				</div>
 				<div>
 					<label><strong>DNI</strong></label>
-					<input id="DNI" maxlength="9" name="DNI" size="20" type="text"/>
+					<input id="DNI" maxlength="9" name="DNI" size="20" type="text" required/>
 				</div>
 				<div>
 					<label><strong>Tel&eacute;fono</strong></label>
-					<input id="phone" maxlength="25" name="phone" size="25" type="text"/>
+					<input id="phone" maxlength="25" name="phone" size="25" type="tel"/>
 				</div>
 				<div>
 					<label for="sexo"><strong>Sexo</strong></label>
 					<select id="gender" name="sexo">
-						<option	value="unselected">--Selecciona tu sexo--</option>
+						<option	id="defaultOption" value="unselected">--Selecciona tu sexo--</option>
 						<option	value="male">Hombre</option>
 						<option	value="female">Mujer</option>
 						<option	value="transgender_(male)">Hombre transexual</option>
@@ -164,21 +133,27 @@
 				</div>
 				<div>
 					<label><strong>Escribe aqu&iacute; tu mensaje</strong></label>
-					<textarea name="description" cols="75" maxlength="1000000" rows="10"></textarea>
+					<textarea name="description" cols="75" maxlength="1000000" required rows="10"></textarea>
 				</div>
 				<div>
-					<label><strong>Fichero adjunto</strong></label>
+					<label><strong>Fichero adjunto (opcional)</strong></label>
 					<input name="adjunto" type="file"/>
 				</div>
 				<div id="right">
-					<input type="submit" name="boton_envio" onclick="
-							var validData = checkForm();
+					<input type="submit" name="boton_envio"
+					onclick="
+							var validData = checkForm()
 								if (validData){
 									this.disabled=true; 
-									this.value='Enviando...'; 
-									this.form.submit();
-								} else{
-									alert('te faltan datos');
+									this.value = 'Enviando...'; 
+									
+                                    this.form.submit();
+                                    function works(){
+                                        this.value = 'Enviado';
+                                        //alert('Se ejecuta pero no funciona.')
+                                    }
+                                    setTimeout(works, 1000);
+                                    //function(){this.value='Enviado'}
 								}"
 						value="Enviar" />
 	            	<input type="reset" name="boton_reset" value="Borrar los datos introducidos" />
