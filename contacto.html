@@ -44,6 +44,9 @@
 					|| DNILetter == 'A' || DNILetter == 'G' || DNILetter == 'M' || DNILetter == 'Y' || DNILetter == 'F' || DNILetter == 'P' || DNILetter == 'D' || DNILetter == 'X' || DNILetter == 'B' || DNILetter == 'N' || DNILetter == 'J' || DNILetter == 'Z' || DNILetter == 'S' || DNILetter == 'Q' || DNILetter == 'V' || DNILetter == 'H' || DNILetter == 'L' || DNILetter == 'C' || DNILetter == 'K' || DNILetter == 'E' || DNILetter == 'T')){
 					isValid = true;
 				}
+                if(DNI == ''){
+                    return true; //Ya se encarga el HTML de comprobar si ha introducido algo el usuario.
+                }
 				return isValid;
 			}
 			function checkGender(){
