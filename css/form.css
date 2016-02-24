@@ -1,0 +1,26 @@
+input:focus{
+	background-color: rgb(240, 233, 208);
+}
+input:hover{
+	background-color: rgb(247, 240, 213);
+}
+input{
+	padding: 3px;
+}
+label{
+	margin-left: 10px;
+	display: block;
+	width: 20%;
+	float: left;
+}
+
+option:focus{
+	background-color: #ddf6cf;
+}
+textarea:hover{
+	background-color: rgb(247, 240, 213);
+}
+textarea:focus{
+	background-color: rgb(241, 230, 210);
+	border: 2px solid rgb(241, 232, 188);
+}

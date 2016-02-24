@@ -116,25 +116,7 @@ img.img{
 	float: left;
 	margin: 1em;
 }
-input{
-	padding: 3px;
-}
-label{
-	margin-left: 10px;
-	display: block;
-	width: 20%;
-	float: left;
-}
-input:focus{
-	background-color: #ccffcc;
-	border: 2px solid green;
-}
-input:hover{
-	background-color: #ddf6cf;
-}
-option:focus{
-	background-color: #ddf6cf;
-}
+
 p{	
 	margin-left: 1em;
 	margin-right: 1em;
@@ -180,14 +162,6 @@ table#python:hover{
 	background: yellow;
 	color: blue;
 }
-textarea:hover{
-	background-color: #ddf6cf;
-}
-textarea:focus{
-	background-color: #ccffcc;
-	border: 2px solid green;
-}
-
 ul.menu{
 	height: 35.2px;
 	display: inline;

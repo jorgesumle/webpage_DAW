@@ -10,24 +10,43 @@
 		<meta name="palabras clave" content="arcade machines, máqinas recreativas, MAME"/>
 		<title>Freak Spot</title>
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+        <link rel="stylesheet" type="text/css" href="css/form.css" />
 		<link rel="icon" type="images/ico" href="favicon.ico" />
 		<script charset="utf-8" type="text/javascript">
 			function foc(id){
 				document.getElementById(id).focus();
 			}
 			function checkForm(){
+                var isValid = true;
 				/*if(!checkEmail()){
 					alert("El email introducido no es válido.");
 					isValid = false;
 				}*/
-                var isValid = true;
+			    if(document.getElementById("nam").value == ""){
+                    isValid = false;
+                    document.getElementById("nam").style.borderColor = "red"; 
+                }
+                
+                
+                if(document.getElementById("phone").value == ""){
+                    isValid = false;
+                    document.getElementById("phone").style.borderColor = "red"; 
+                }
+               
 				if(!checkDNI()){
-					alert("El DNI introducido no es válido.");
-					isValid = false;
-				}
+                    isValid = false;
+					document.getElementById("DNI").style.borderColor = "red"; 
+                }	
                 if(!checkGender()){
                     isValid = false;
-                    alert("Selecciona una opción de la lista desplegable (\"Sexo\").");
+					document.getElementById("gender").style.borderColor = "red";
+                }
+                if(!checkSubject()){ //Selecciona paso de especificar el asunto.
+                    document.getElementById("noSubject").checked = true;
+                }
+                if(document.getElementById("description").value == ""){
+                    isValid = false;
+                    document.getElementById("description").style.borderColor = "red";
                 }
                 return isValid;
 			}
@@ -36,17 +55,24 @@
 				return ( /^\w+@\w+\.es$/.test(email) || /^\w+@\w+\.com$/.test(email) || /^\w+@\w+\.net$/.test(email));
 			}*/
 			function checkDNI(){
-				var isValid = false;
+				var isValid = true;
 				var DNI = document.getElementById("DNI").value;
-				var DNINumber = DNI.substring(0, 8);
-				var DNILetter = DNI.charAt(8);
-				if(!(isNaN(DNINumber) || DNINumber < 0 || DNINumber > 99999999) && (DNILetter == 'T' || DNILetter == 'R' || DNILetter == 'W' || DNILetter == 'A' || DNILetter == 'W'
-					|| DNILetter == 'A' || DNILetter == 'G' || DNILetter == 'M' || DNILetter == 'Y' || DNILetter == 'F' || DNILetter == 'P' || DNILetter == 'D' || DNILetter == 'X' || DNILetter == 'B' || DNILetter == 'N' || DNILetter == 'J' || DNILetter == 'Z' || DNILetter == 'S' || DNILetter == 'Q' || DNILetter == 'V' || DNILetter == 'H' || DNILetter == 'L' || DNILetter == 'C' || DNILetter == 'K' || DNILetter == 'E' || DNILetter == 'T')){
-					isValid = true;
+				
+				var DNIReg = /^\d{8}[a-zA-Z]$/;
+				
+				if(DNIReg.test(DNI)){
+					var DNINumber = parseInt(DNI.substring(0, DNI.length - 1));
+					var DNILetter = DNI.charAt(DNI.length - 1);
+					var numLetter = DNINumber % 23;
+					var letter = 'TRWAGMYFPDXBNJZSQVHLCKET';
+					letter = letter.substring(numLetter, numLetter + 1);
+					if(letter != DNILetter.toUpperCase()){
+						isValid = false;
+					}
 				}
-                if(DNI == ''){
-                    return true; //Ya se encarga el HTML de comprobar si ha introducido algo el usuario.
-                }
+				else{
+					isValid = false;
+				}
 				return isValid;
 			}
 			function checkGender(){
@@ -56,6 +82,17 @@
                 else {
                     return true;
                 }
+            }
+            function checkSubject(){
+                var isValid = false;
+                var checkbox = document.getElementsByName("subject");
+                for(var i = 0; i < checkbox.length; i++){
+                    if(checkbox[i].checked){
+                        isValid = true;
+                        break;
+                    }
+                }
+                return isValid
             }
 		</script>
 	</head>
@@ -120,23 +157,23 @@
 					<label><strong>Asunto</strong></label>
 
 					<!--Pongo un espacio en blanco para que se respete el espacio de los label y para que los 'checkboxs' estén como los campos.-->
-					<input name="do_not_read" type="checkbox"/>Me aburro y solo quiero hacerte perder el tiempo.<br/>
+					<input name="subject" type="checkbox"/>Me aburro y solo quiero hacerte perder el tiempo.<br/>
 					<label>&nbsp;</label>
-					<input checked="checked" name="read" type="checkbox"/>Paso de especificar el asunto.<br/>
+					<input checked="checked" id="noSubject" name="read" type="checkbox"/>Paso de especificar el asunto.<br/>
 					<label>&nbsp;</label>
-					<input name="check_carefully" type="checkbox"/>He encontrado un error, falta de ortograf&iacute;a, etc.<br/>
+					<input name="subject" type="checkbox"/>He encontrado un error, falta de ortograf&iacute;a, etc.<br/>
 					<label>&nbsp;</label>
-					<input name="reply" type="checkbox"/>Hay una cosa que has publicado que no entiendo o que me resulta confusa.<br/>
+					<input name="subject" type="checkbox"/>Hay una cosa que has publicado que no entiendo o que me resulta confusa.<br/>
 					<label>&nbsp;</label>
-					<input name="do_not_read" type="checkbox"/>Te odio y quiero que dejes de publicar contenido. Inserta abajo, en el cuadro de texto, tus cr&iacute;ticas e insultos.<br/>
+					<input name="subject" type="checkbox"/>Te odio y quiero que dejes de publicar contenido. Inserta abajo, en el cuadro de texto, tus cr&iacute;ticas e insultos.<br/>
 					<label>&nbsp;</label>
-					<input name="do_not_read" type="checkbox"/>Quiero colaborar con el sitio web.<br/>
+					<input name="subject" type="checkbox"/>Quiero colaborar con el sitio web.<br/>
 					<label>&nbsp;</label>
-					<input name="otro" type="checkbox"/>Tengo otro motivo diferente<br/>
+					<input name="subject" type="checkbox"/>Tengo otro motivo diferente<br/>
 				</div>
 				<div>
 					<label><strong>Escribe aqu&iacute; tu mensaje</strong></label>
-					<textarea name="description" cols="75" maxlength="1000000" required rows="10"></textarea>
+					<textarea id="description" name="description" cols="75" maxlength="1000000" required rows="10"></textarea>
 				</div>
 				<div>
 					<label><strong>Fichero adjunto (opcional)</strong></label>
@@ -151,15 +188,34 @@
 									this.value = 'Enviando...'; 
 									
                                     this.form.submit();
-                                    function works(){
-                                        this.value = 'Enviado';
-                                        //alert('Se ejecuta pero no funciona.')
+                                    document.getElementById('nam').style.borderColor = 'green';
+                                    document.getElementById('email').style.borderColor = 'green'; 
+									document.getElementById('DNI').style.borderColor = 'green'; 
+									document.getElementById('gender').style.borderColor = 'green';
+                                    document.getElementById('phone').style.borderColor = 'green';
+                                    
+                                    var checkbox = document.getElementsByName('subject');
+                                    for(var i = 0; i < checkbox.length; i++){
+                                        checkbox[i].style.outline = '1px solid green';
                                     }
-                                    setTimeout(works, 1000);
-                                    //function(){this.value='Enviado'}
+                                    
+                                    document.getElementById('description').style.borderColor = 'green';
+									this.value='Enviado';
 								}"
 						value="Enviar" />
-	            	<input type="reset" name="boton_reset" value="Borrar los datos introducidos" />
+	            	<input type="reset" name="boton_reset" value="Borrar los datos introducidos" onclick="
+                                    document.getElementById('nam').style.borderColor = '';
+                                    document.getElementById('email').style.borderColor = ''; 
+									document.getElementById('DNI').style.borderColor = ''; 
+									document.getElementById('gender').style.borderColor = '';
+                                    document.getElementById('phone').style.borderColor = '';
+                                    
+                                    var checkbox = document.getElementsByName('subject');
+                                    for(var i = 0; i < checkbox.length; i++){
+                                        checkbox[i].style.outline = '';
+                                    }
+                                    
+                                    document.getElementById('description').style.borderColor = '';"/>
             	</div>
 			</div>
 		</form>
