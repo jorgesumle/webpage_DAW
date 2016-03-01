@@ -9,7 +9,8 @@
 		<meta name="objetivos de la web" content="Completar la tarea de Lenguajes de Marcas y Sistemas de Gestión Empresarial." />
 		<meta name="palabras clave" content="arcade machines, máqinas recreativas, MAME" />
 		<title>Freak Spot</title>
-		<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
 		<link rel="icon" type="images/ico" href="favicon.ico" />
 		<script type="text/javascript">
 			function clock(milliseconds){
@@ -17,78 +18,11 @@
                 var t = d.toLocaleTimeString();
                 document.getElementById("clock").innerHTML = t;
             }
-            var idContenedor = "capa_calendario";
-			var today = new Date();
-			var month = today.getMonth();
-			var day = 1;
-			var year = today.getFullYear();
-			var dayWeek = new Array ('L','M','X','J','V','S','D');
-			var monthly = new Array('Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
-			var tunIex=navigator.appName=="Microsoft Internet Explorer"?true:false;
-			if(tunIex && navigator.userAgent.indexOf('Opera')>=0){tunIex = false}
-			tunOp = navigator.userAgent.indexOf('Opera')>=0 ? true: false;
-			
-			function calendario(){
-				dia = day;
-				tab = document.createElement('table');
-				tab.id = 'calendario';
-				document.getElementById(idContenedor).appendChild(tab);
-				tcabeza = document.createElement('thead');
-				tab.appendChild(tcabeza);
-				fi2 = document.createElement('tr');
-				
-				fi2b = document.createElement('th');
-				fi2b.colSpan = 7;
-				fi2.id = 'mesCalendario';
-				fi2b.appendChild(document.createTextNode(monthly[month] + "  -  " + year));
-				fi2.appendChild(fi2b);
-				tcabeza.appendChild(fi2);
-				fi = document.createElement('tr');
-				tcabeza.appendChild(fi);
-				for(m=0;m<7;m++){
-					ce = document.createElement('th');
-					ce.id = 'weekDay';
-					ce.appendChild(document.createTextNode(dayWeek[m]));
-					fi.appendChild(ce);
-				}
-				var escribe = false;
-				var escribe2 = true;
-				fecha = new Date(year,month,day)
-				var d = fecha.getDay()-1 //dia semana
-				if(d<0){d = 6}
-				tcuerpo = document.createElement('tbody')
-				tab.appendChild(tcuerpo)
-				while(escribe2){
-					fi = document.createElement('tr')
-					co = 0
-					for(t=0;t<7;t++){
-						ce = document.createElement('td')
-						ce.class = 'numberDay';
-						if(escribe && escribe2){
-						fecha2 = new Date(year,month,day)
-						
-						if(fecha2.getMonth() != month){escribe2 = false;}
-						else{ce.appendChild(document.createTextNode(day));day++;co++}
-					}
-					if(d == t && !escribe){
-					ce.appendChild(document.createTextNode(day))
-					day++;co++
-					escribe = true
-					}
-					fi.appendChild(ce)
-					if(today.getDate()+1 == day && month == today.getMonth() && year == today.getFullYear()){ce.className = "Hoy"}
-				}
-						
-					if(co>0){tcuerpo.appendChild(fi)}
-					
-				}
-				today = dia
-			}
 		</script>
 
 	</head>
 
-	<body onload="self.setInterval(function(){clock()},1000); calendario()">
+	<body onload="self.setInterval(function(){clock()},1000); hitCounter();">
 		<div class="menuBackground">
 			<ul class="menu">
 				<li><a href="art&iacute;culos/videojuegos/El_&uacute;ltimo_nivel_de_Pac-Man_y_los_videojuegos_indies.htm">Videojuegos</a></li>
@@ -107,26 +41,41 @@
 		<div class="header">
 			<img alt="Icono del sitio web" src="images/icono.png" />
 			<h1>FREAK SPOT</h1>
-			<h2>Para Amantes del Software</h2>
+			<h2>Para Amantes del Software</h2>  
 		</div>
+        
 		<!--<div class="twitter">
 			<a class="twitter-timeline"  href="https://twitter.com/primerodaw" data-widget-id="676817531202572288">Tweets por el @primerodaw.</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		</div>-->
-		<div class="artPrev-mini">
-			<h2>Impresionante: r&eacute;cord mundial en <cite>Crazy Climber</cite></h2>
-			<iframe width="400" height="315" src="https://www.youtube.com/embed/RCrAAIEnSYI" frameborder="0" allowfullscreen></iframe>
-		</div>
-		<div class="artPrev-mini">
-			<h2>Descarga el <cite>Manual de iniciaci&oacute;n a MAME</cite> y disfruta de miles de videojuegos de recreativas</h2>
-			<p>Los videojuegos de m&aacute;quinas recreativas son m&aacute;s que un simple producto comercial; son tesoros culturales que forman parte de la historia de los videojuegos. As&iacute; pues, la conservaci&oacute;n de estos se hace obligada. <acronym title="Multiple Arcade Machine Emulator">MAME</acronym>  trata de ayudar a preservar estos videojuegos y, adem&aacute;s, nos permite recrearnos con ellos.</p>
-			<p>En este artículo os presento un manual que he escrito sobre MAME, no ocupa más de 25 p&aacute;ginas. Mi <cite>Manual de iniciación a MAME</cite> explica perfectamente qu&eacute; es MAME, cu&aacute;l es su fin, c&oacute;mo naci&oacute;, c&oacute;mo se instala y muchas otras cuestiones relacionadas con su uso.</p>
-			<p><a href="archivosPDF/Manual_de_iniciación_a_MAME.pdf">Clica aqu&iacute; para descargar el pdf <img alt="Imagen de descarga de un PDF" class="download" src="images/PDFIcon.png" /></a></p>
-		</div>
-		<div id="capa_calendario"></div>
+        <div id="articles">
+        	<div class="artPrev-mini">
+        		<h2><a class="title"href="https://www.youtube.com/watch?v=Sq8jr2IoMhI">Jugando a ser artista con la etiqueta canvas</a></h2>
+        		<iframe width="560" height="315" src="https://www.youtube.com/embed/Sq8jr2IoMhI" frameborder="0" allowfullscreen></iframe>
+        	</div>
+            <div class="artPrev-mini">
+                <h2>Impresionante: r&eacute;cord mundial en <cite>Crazy Climber</cite></h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/RCrAAIEnSYI" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="artPrev-mini">
+                <h2><a class="title" href="artículos/videojuegos/Manual_de_iniciación_a_MAME.htm">Descarga el <cite>Manual de iniciaci&oacute;n a MAME</cite> y disfruta de miles de videojuegos de recreativas</a></h2>
+                <p>Los videojuegos de m&aacute;quinas recreativas son m&aacute;s que un simple producto comercial; son tesoros culturales que forman parte de la historia de los videojuegos. As&iacute; pues, la conservaci&oacute;n de estos se hace obligada. <acronym title="Multiple Arcade Machine Emulator">MAME</acronym>  trata de ayudar a preservar estos videojuegos y, adem&aacute;s, nos permite recrearnos con ellos.</p>
+                <p>En este artículo os presento un manual que he escrito sobre MAME, no ocupa más de 25 p&aacute;ginas. Mi <cite>Manual de iniciación a MAME</cite> explica perfectamente qu&eacute; es MAME, cu&aacute;l es su fin, c&oacute;mo naci&oacute;, c&oacute;mo se instala y muchas otras cuestiones relacionadas con su uso.</p>
+                <p><a href="archivosPDF/Manual_de_iniciación_a_MAME.pdf">Clica aqu&iacute; para descargar el pdf <img alt="Imagen de descarga de un PDF" class="download" src="images/PDFIcon.png" /></a></p>
+            </div>
+            <div class="artPrev-mini">
+            	<h2><a class="title" href="art&iacute;culos/videojuegos/El_&uacute;ltimo_nivel_de_Pac-Man_y_los_videojuegos_indies.htm">Pac-Man y los videojuegos independientes</a></h2>
+            	<img class="img" alt="Imagen del &uacute;ltimo nivel de Pac-Man" src="images/lastLevelPac-Man.jpg" width="30%"/>
+            	<p>El videojuego m&aacute;s representativo de los a&ntilde;os ochenta es <cite>Pac-Man</cite>. Desde entonces ha habido personas que han pasado d&iacute;as enteros de su vida incluso meses para llegar hasta el &uacute;ltimo nivel, que no existe.</p>
+            	<p>Muchos afirman que este nivel es el 256. Sin embargo, es f&aacute;cil argumentar que Pac-Man fue dise&ntilde;ado para no tener otro fin que la derrota del jugador. Con niveles con cada vez mayor dificultad, es imposible completar el juego sin hacer uso del <em>glitch</em> para &laquo;atravesar&raquo; (esquivar) los sprites de los fantasmas y de la memorizaci&oacute;n de los patrones del videojuego. Adem&aacute;s, el &uacute;ltimo nivel, en que se llega a una pantalla dividida con n&uacute;meros y letras a un lado, hace el control del personaje casi imposible. Estos ocurre porque se desborda la variable de tipo byte (2<sup>8</sup>), que solo puede almacenar hasta 256 n&uacute;meros.</p>
+            	<p><cite>Pac-Man</cite> es sencillo, adictivo y no violento: cosas de las que no gozan muchos videojuegos. El &eacute;xito de este videojuego reside en su simplicidad, lo que demuestra que no es necesario invertir miles o millones de euros para crear un buen videojuego. La industria de los videojuegos est&aacute; perdiendo originalidad y los denominados &laquo;juegos indies&raquo; est&aacute;n ganando terreno.</p>
+				<p>Esto abre la puerta a muchos programadores y entusiastas de los videojuegos para explorar un nuevo terreno, m&aacute;s basado en el software libre y en la autogesti&oacute;n y m&aacute;s alejado del lado oscuro de la cl&aacute;sica industria de los videojuegos, cuyo mero objetivo es el de obtener m&aacute;s y cada vez m&aacute;s beneficios, sin importarles apenas los jugadores y los programadores. Solo hay que citar algunas de las molestias de los <em>gamers</em> y <em>youtubers</em> con el copyright de los juegos, que les ha obligado a retirar v&iacute;deos de la Red. Asimismo, hay que tener en cuenta la imposibilidad para los programadores para crear versiones derivadas de algunos videojuegos dentro de la legalidad. Por suerte, hay numerosas compa&ntilde;&iacute;as que han dejado atr&aacute;s esa filosof&iacute;a.</p>
+				<p>En una entrevista a VH1 Games de 2007, Toru Iwatani (el dise&ntilde;ador de Pac-Man), dijo: <q>No estoy seguro de si deber&iacute;a decir esto, pero la verdad es que no tuve ninguna recompensa por el &eacute;xito del juego. Solo era un empleado, no me aumentaron el sueldo, ni me dieron un bonus o una felicitaci&oacute;n oficial de ning&uacute;n tipo</q>. La imagen de <cite>Pac-Man</cite> ha sido explotada desde el 22 de mayo de 1980 hasta nuestros d&iacute;as. <cite>Pac-Man 256</cite> y <cite>Pac-Man bounce</cite> son los &uacute;ltimos juegos de <cite>Pac-Man</cite> para dispositivos m&oacute;viles de la casi interminable saga de <cite>Pac-Man</cite>, sin contar versiones derivadas. Como se ve Pac-Man será inmortal e interminable mientras le puedan sacar dinero.</p>
+				<p>Sin embargo, no todas las empresas que han lanzado versiones de <cite>Pac-Man</cite> se han comportado de igual modo, tanto con los creadores como con los jugadores. Los jugadores deben ser capaces de distinguir las empresas malas de las buenas y apoyar a los peque&ntilde;os equipos de desarrollo, que actualmente est&aacute;n haciendo maravillas por amor a los videojuegos, para ellos mismos y para sus seguidores.</p>
+            </div>
+        </div>
 		<div class="license">
-			<p><!--Cumple la validacion excepto por los elementos externos como Twitter y YouTube.-->
-	    		<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
+			<p>
 	    		<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><cite>Freak Spot</cite></span> por <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Jorge Maldonado Ventura</span> est&aacute; protegido bajo la siguiente licencia: <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Reconocimiento-NoComercial 4.0 Internacional License</a>.
 	  		</p>
 	  		

@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="autor" content="Jorge Maldonado Ventura" />
+		<meta name="editor usado" content="Sublime Text 2" />
+		<meta name="fecha de creación" content="8 de diciembre del 2015" />
+		<meta name="contenido" content="..." />
+		<meta name="objetivos de la web" content="Completar la tarea de Lenguajes de Marcas y Sistemas de Gestión Empresarial." />
+		<meta name="palabras clave" content="imagen de bienvenida, galer&iacute;a fotogr&aacute;fica, hola" />
+		<title>Galer&iacute;a fotogr&aacute;fica</title>
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+		<link rel="stylesheet" type="text/css" href="css/galery.css" />
+		<link rel="icon" type="images/ico" href="favicon.ico" />
+		<script type="text/javascript">
+			var images = new Array(
+                'bienvenida.png', 
+                'icono.png', 
+                'python-logo-master-v3-TM.png', 
+                'lastLevelPac-Man.jpg', 
+                'PDFIcon.png'
+            );
+			
+			var description = new Array(
+				'Bienvenido a la galer&iacute;a fotogr&aacute;fica de la web. Son todas las im&aacute;genes que aparecen en la web. Clica en las im&aacute;genes para verlas en su tama&ntilde;o original.',
+				'Este es el icono de la web.',
+				'<a href="https://www.python.org/">Python</a> es un lenguaje de programaci&oacute;n de muy alto nivel.',
+				'El &uacute;ltimo nivel de <cite>Pac-Man</cite>. La variable tipo <em>byte</em>, que solo puede almacenar 2<sup>8</sup> (256) números se desborda, y hace este &uacute;ltimo nivel pr&aacute;cticamente injugable.',
+				'Imagen que se utiliza para indicar que se puede descargar un archivo PDF.'
+			);
+			var imgAlt = new Array(
+				'Cutre imagen de bienvenida',
+				'El icono de la web',
+				'El logotipo de Python',
+				'El &uacute;ltimo nivel de Pac-Man',
+				'Icono de descarga de documentos PDF'
+			);
+
+			var pos = 0;
+
+			function changeImg(direction){
+                var link = document.getElementById("imgLink");
+				var image = document.getElementById("galeryImage");
+				var text = document.getElementById("imgDescription");
+				const lastImage = images.length - 1;
+				var aux = pos + direction;
+				if(aux < 0){
+					aux = lastImage;
+				}
+				if(aux > lastImage){
+					aux = 0;
+				}
+				pos = aux;
+                
+                link.href = 'images/' + images[pos];
+				image.src = 'images/' + images[pos];
+				image.alt = imgAlt[pos];
+				text.innerHTML = description[pos];
+			}
+		</script>
+	</head>
+	<body>
+		<div class="menuBackground">
+			<a href="index.html"><img id="icono" alt="Logotipo del sitio web" src="images/icono.png" /></a>
+			<ul class="menu">
+				<li><a href="art&iacute;culos/videojuegos/El_&uacute;ltimo_nivel_de_Pac-Man_y_los_videojuegos_indies.htm">Videojuegos</a></li>
+				<li><a href="art&iacute;culos/programaci&oacute;n/programaci&oacute;n.html">Programaci&oacute;n</a></li>
+				<li><a href="https://www.youtube.com/channel/UC9hFpnRQd3gJmCAOHpmFsKQ">Mi canal de Youtube</a></li>
+			</ul>
+			<ul class="menu2">
+				<li><a class="there" href="galer&iacute;a_fotogr&aacute;fica.htm">Im&aacute;genes</a></li>
+				<li><a href="sobre_el_sitio_web.htm">Sobre el sitio web</a></li>
+				<li><a href="contacto.html">Contacto</a></li>
+			</ul>
+		</div>
+		&nbsp;
+		<div class="img">
+			<a id="imgLink" href="images/bienvenida.png">
+				<img alt="Cutre imagen de bienvenida" id="galeryImage" src="images/bienvenida.png">
+			</a>
+			<p id="imgDescription">Bienvenido a la galer&iacute;a fotogr&aacute;fica de la web. Son todas las im&aacute;genes que aparecen en la web. Clica en las im&aacute;genes para verlas en su tama&ntilde;o original.</p>
+		</div>
+				
+		<div class="linker">
+			<input class="button" onclick="changeImg(-1)" type="button" value="Anterior"></input><span id="derecha"><input class="button" onclick="changeImg(1)" type="button" value="Siguiente"></input></span>
+		</div>
+	</body>
+</html>

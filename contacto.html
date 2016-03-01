@@ -18,17 +18,17 @@
 			}
 			function checkForm(){
                 var isValid = true;
-				/*if(!checkEmail()){
-					alert("El email introducido no es válido.");
+				if(!document.getElementById('email').checkValidity()){
+                    document.getElementById("nam").style.borderColor = "red"; 
 					isValid = false;
-				}*/
-			    if(document.getElementById("nam").value == ""){
+				}
+			    if(!document.getElementById("nam").checkValidity()){
                     isValid = false;
                     document.getElementById("nam").style.borderColor = "red"; 
                 }
                 
                 
-                if(document.getElementById("phone").value == ""){
+                if(!document.getElementById("phone").checkValidity()){
                     isValid = false;
                     document.getElementById("phone").style.borderColor = "red"; 
                 }
@@ -44,16 +44,12 @@
                 if(!checkSubject()){ //Selecciona paso de especificar el asunto.
                     document.getElementById("noSubject").checked = true;
                 }
-                if(document.getElementById("description").value == ""){
+                if(!document.getElementById("description").checkValidity()){
                     isValid = false;
                     document.getElementById("description").style.borderColor = "red";
                 }
                 return isValid;
 			}
-			/*function checkEmail(){
-				var email = document.getElementById("email");
-				return ( /^\w+@\w+\.es$/.test(email) || /^\w+@\w+\.com$/.test(email) || /^\w+@\w+\.net$/.test(email));
-			}*/
 			function checkDNI(){
 				var isValid = true;
 				var DNI = document.getElementById("DNI").value;
@@ -130,7 +126,7 @@
 				</div>
 				<div>
 					<label><strong>Tel&eacute;fono</strong></label>
-					<input id="phone" maxlength="25" name="phone" size="25" type="tel"/>
+					<input id="phone" maxlength="25" name="phone" size="25" required type="tel"/>
 				</div>
 				<div>
 					<label for="sexo"><strong>Sexo</strong></label>
